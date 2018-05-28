@@ -8,14 +8,6 @@ use App\Content;
 
 class ContentController extends Controller
 {
-    public function __construct() {
-        $this->middleware(function ($request, $next) {
-            abort_unless(optional(auth()->user()->role)->role == 'admin', 401);
-
-            return $next($request);
-        });
-    }
-
     public function index() {
         $allContent = Content::all();
 
@@ -31,13 +23,13 @@ class ContentController extends Controller
     }
 
     public function store() {
-        $content = Content::create(request()->only(['title', 'body', 'content_type_id']) + ['user_id' => auth()->user()->id]);
+        $content = Content::create(request()->only(['title', 'body']) + ['user_id' => auth()->user()->id]);
 
-        return redirect("/admin/content/{$content->id}/edit");
+        return redirect("/");
     }
 
     public function update(Content $content) {
-        $content->update(request()->only(['title', 'body', 'content_type_id']));
+        $content->update(request()->only(['title', 'body']));
 
         return redirect("/admin/content/{$content->id}/edit");
     }

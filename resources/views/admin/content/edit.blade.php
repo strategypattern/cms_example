@@ -6,8 +6,7 @@
     <a href="/">Go back to all content</a>
     <form action="/admin/content/{{ $content->id }}" method="post">
         {{ csrf_field() }}
-        <input type="hidden" name="_method" value="PUT">  
-        <input type="hidden" name="content_type_id" value="{{ $content->content_type_id }}">
+        <input type="hidden" name="_method" value="PUT">
         
         <div class="form-group">
             <label for="title">Title</label>

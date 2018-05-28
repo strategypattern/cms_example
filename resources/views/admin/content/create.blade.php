@@ -5,7 +5,6 @@
     <h3>Create new content</h3>
     <form action="/admin/content" method="post">
         {{ csrf_field() }}        
-        <input type="hidden" name="content_type_id" value="1">
         
         <div class="form-group">
             <label for="title">Title</label>

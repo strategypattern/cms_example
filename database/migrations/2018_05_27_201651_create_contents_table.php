@@ -15,14 +15,12 @@ class CreateContentsTable extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('content_type_id');
             $table->unsignedInteger('user_id');
             $table->text('title');
             $table->text('body');
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('content_type_id')->references('id')->on('content_types');            
+       
             $table->foreign('user_id')->references('id')->on('users');            
         });
     }

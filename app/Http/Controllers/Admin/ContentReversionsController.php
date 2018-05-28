@@ -12,6 +12,7 @@ class ContentReversionsController extends Controller
     public function store(Revision $revision) {
         $content = Content::find($revision->content_id);
         $content->update($revision->before);
+        $revision->delete();
 
         return redirect("/admin/content/{$content->id}/edit");
     }
